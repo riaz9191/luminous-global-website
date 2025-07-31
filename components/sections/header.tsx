@@ -49,11 +49,15 @@ export default function Header() {
               ))}
             </nav>
 
-            <Button className="hidden md:block bg-blue-600 hover:bg-blue-700">
-              Get Quote
-            </Button>
+            <Link href="#contact">
+              <Button className="hidden md:block bg-blue-600 hover:bg-blue-700">
+                Get Quote
+              </Button>
+            </Link>
             
-            <Button className="md:hidden bg-blue-600 hover:bg-blue-700 text-sm px-4 py-2">Quote</Button>
+            <Link href="#contact">
+              <Button className="md:hidden bg-blue-600 hover:bg-blue-700 text-sm px-4 py-2">Quote</Button>
+            </Link>
           </div>
         </div>
       </header>

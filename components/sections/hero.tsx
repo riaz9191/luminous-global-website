@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { useCounter, useTypewriter, useInView } from "@/hooks/use-hooks"
 import { ArrowRight, CheckCircle } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Hero() {
   const [ref, isInView] = useInView();
@@ -41,21 +42,31 @@ export default function Hero() {
                 products across global markets.
               </p>
             </div>
+            import Link from "next/link";
+
+// ... (imports)
+
+// ... (component code)
+
             <div className={`flex flex-col sm:flex-row gap-4`}>
-              <Button
-                size='lg'
-                className='bg-blue-600 hover:bg-blue-700 hover-lift group'
-              >
-                Start Trading
-                <ArrowRight className='ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform' />
-              </Button>
-              <Button
-                size='lg'
-                variant='outline'
-                className='hover-lift bg-transparent'
-              >
-                View Products
-              </Button>
+              <Link href="#contact">
+                <Button
+                  size='lg'
+                  className='bg-blue-600 hover:bg-blue-700 hover-lift group'
+                >
+                  Start Trading
+                  <ArrowRight className='ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform' />
+                </Button>
+              </Link>
+              <Link href="#products">
+                <Button
+                  size='lg'
+                  variant='outline'
+                  className='hover-lift bg-transparent'
+                >
+                  View Products
+                </Button>
+              </Link>
             </div>
             <div className={`flex items-center space-x-8 pt-4`}>
               <div className='text-center'>
