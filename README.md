@@ -67,7 +67,6 @@ To start the development server, run:
 
 ```bash
 npm run dev
-```
 
 Open [http://localhost:9191](http://localhost:9191) in your browser to see the result.
 
@@ -90,6 +89,7 @@ npm run start
 ```
 
 ## Project Structure
+```
 
 ```
 luminous-global-website/

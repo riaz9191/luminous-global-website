@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useInView } from "@/hooks/use-hooks"
-import { Facebook, Instagram, Mail, MapPin, Phone, Loader2 } from "lucide-react"
+import { Facebook, Instagram, Mail, MapPin, Phone, Loader2, ArrowRight } from "lucide-react"
 import { useState } from "react"
 import { toast } from "sonner"
 import { siteConfig } from "@/config/site"
@@ -52,121 +52,151 @@ export default function Contact() {
 
   return (
     <section
-      id="contact"
+      id='contact'
       ref={ref}
-      className={`fade-in-section ${isInView ? "is-visible" : ""} py-20 bg-white`}
+      className={`fade-in-section ${
+        isInView ? "is-visible" : ""
+      } py-20 bg-white`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Let's Do Business!</h2>
-          <p className="text-xl text-gray-600">
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='text-center mb-16'>
+          <h2 className='text-3xl lg:text-4xl font-bold text-gray-900 mb-4'>
+            Let's Do Business!
+          </h2>
+          <p className='text-xl text-gray-600'>
             If you are a supplier, wholesaler, or buyer — reach out to us today.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          <div className="space-y-8">
+        <div className='grid lg:grid-cols-2 gap-8 lg:gap-12'>
+          <div className='space-y-8'>
             <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
-              <div className="space-y-4">
+              <h3 className='text-2xl font-bold text-gray-900 mb-6'>
+                Get in Touch
+              </h3>
+              <div className='space-y-4'>
                 {[
                   { icon: Mail, text: siteConfig.contact.email },
                   { icon: Phone, text: siteConfig.contact.phone },
                   { icon: MapPin, text: siteConfig.contact.address },
                 ].map((contact, index) => (
-                  <div
-                    key={index}
-                    className={`flex items-center space-x-4`}
-                  >
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <contact.icon className="h-6 w-6 text-blue-600" />
+                  <div key={index} className={`flex items-center space-x-4`}>
+                    <div className='w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0'>
+                      <contact.icon className='h-6 w-6 text-blue-600' />
                     </div>
-                    <span className="text-gray-700 text-base lg:text-lg break-words">{contact.text}</span>
+                    <span className='text-gray-700 text-base lg:text-lg break-words'>
+                      {contact.text}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Cool Follow Us Section with Color Icons */}
+            {/* Option 1: Sleek & Modern */}
             <div>
-              <h4 className="font-semibold text-gray-900 mb-6 text-lg">Follow Us</h4>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <h4 className='font-semibold text-gray-800 mb-4 text-lg'>
+                Connect With Us
+              </h4>
+              <div className='flex flex-col sm:flex-row gap-4'>
+                {/* Instagram Link */}
                 <a
                   href={siteConfig.links.instagram}
-                  className="flex items-center space-x-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='group flex items-center space-x-4 p-2 pl-3 bg-gray-50 hover:bg-white border border-gray-200 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1'
                 >
-                  <Instagram className="h-5 w-5 group-hover:rotate-12 transition-transform" />
-                  <span className="font-medium">@luminousglobal</span>
+                  <div className='flex-shrink-0 h-10 w-10 rounded-full bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 flex items-center justify-center'>
+                    <Instagram className='h-6 w-6 text-white' />
+                  </div>
+                  <div>
+                    <p className='font-semibold text-gray-900 text-sm'>
+                      Instagram
+                    </p>
+                    <p className='text-gray-500 text-xs'>@luminousglobal</p>
+                  </div>
+                  <div className='pr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                    <ArrowRight className='h-4 w-4 text-gray-400' />
+                  </div>
                 </a>
+                {/* Facebook Link */}
                 <a
                   href={siteConfig.links.facebook}
-                  className="flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 group"
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='group flex items-center space-x-4 p-2 pl-3 bg-gray-50 hover:bg-white border border-gray-200 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1'
                 >
-                  <Facebook className="h-5 w-5 group-hover:rotate-12 transition-transform" />
-                  <span className="font-medium">luminousgloballlc</span>
+                  <div className='flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center'>
+                    <Facebook className='h-6 w-6 text-white' />
+                  </div>
+                  <div>
+                    <p className='font-semibold text-gray-900 text-sm'>
+                      Facebook
+                    </p>
+                    <p className='text-gray-500 text-xs'>luminousgloballlc</p>
+                  </div>
+                  <div className='pr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300'>
+                    <ArrowRight className='h-4 w-4 text-gray-400' />
+                  </div>
                 </a>
               </div>
             </div>
           </div>
 
           {/* Fixed Contact Form for Mobile */}
-          <div className="w-full border rounded-lg  border-slate-100">
-            <Card
-              className={`border-0 shadow-lg hover-lift w-full`}
-            >
+          <div className='w-full border rounded-lg  border-slate-100'>
+            <Card className={`border-0 shadow-lg hover-lift w-full`}>
               <CardHeader>
-                <CardTitle className="text-xl">Contact Form</CardTitle>
-                <CardDescription className="text-base">
+                <CardTitle className='text-xl'>Contact Form</CardTitle>
+                <CardDescription className='text-base'>
                   Send us a message and we'll get back to you within 24 hours.
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name" className="text-base">
+              <CardContent className='space-y-6'>
+                <form onSubmit={handleSubmit} className='space-y-6'>
+                  <div className='space-y-2'>
+                    <Label htmlFor='name' className='text-base'>
                       Name
                     </Label>
                     <Input
-                      id="name"
-                      placeholder="Your full name"
-                      className="h-12 w-full"
+                      id='name'
+                      placeholder='Your full name'
+                      className='h-12 w-full'
                       value={formData.name}
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email" className="text-base">
+                  <div className='space-y-2'>
+                    <Label htmlFor='email' className='text-base'>
                       Email
                     </Label>
                     <Input
-                      id="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      className="h-12 w-full"
+                      id='email'
+                      type='email'
+                      placeholder='your@email.com'
+                      className='h-12 w-full'
                       value={formData.email}
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="tsx space-y-2">
-                    <Label htmlFor="message" className="text-base">
+                  <div className='tsx space-y-2'>
+                    <Label htmlFor='message' className='text-base'>
                       Message
                     </Label>
                     <Textarea
-                      id="message"
-                      placeholder="Tell us about your business needs..."
+                      id='message'
+                      placeholder='Tell us about your business needs...'
                       rows={4}
-                      className="w-full resize-none"
+                      className='w-full resize-none'
                       value={formData.message}
                       onChange={handleChange}
                     />
                   </div>
                   <Button
-                    type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700 hover-lift h-12 text-base"
+                    type='submit'
+                    className='w-full bg-blue-600 hover:bg-blue-700 hover-lift h-12 text-base'
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? (
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      <Loader2 className='mr-2 h-4 w-4 animate-spin' />
                     ) : (
                       "Send Message"
                     )}
@@ -178,5 +208,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
