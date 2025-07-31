@@ -26,6 +26,7 @@ export function useInView(threshold = 0.1) {
 
     return () => {
       if (ref.current) {
+        // Check if ref.current is not null before calling unobserve
         observer.unobserve(ref.current)
       }
     }
@@ -35,10 +36,9 @@ export function useInView(threshold = 0.1) {
 }
 
 // Smooth Counter Hook
-export function useCounter(end: number, duration = 2000, start = 0) {
+export function useCounter(end: number, duration = 2000, start = 0, isInView: boolean) {
   const [count, setCount] = useState(start)
   const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView()[1]
 
   useEffect(() => {
     if (isInView) {
@@ -61,10 +61,9 @@ export function useCounter(end: number, duration = 2000, start = 0) {
 }
 
 // Typewriter Effect Hook
-export function useTypewriter(text: string, speed = 50) {
+export function useTypewriter(text: string, speed = 50, isInView: boolean) {
   const [displayText, setDisplayText] = useState("")
   const ref = useRef<HTMLElement | null>(null)
-  const isInView = useInView()[1]
 
   useEffect(() => {
     if (isInView) {

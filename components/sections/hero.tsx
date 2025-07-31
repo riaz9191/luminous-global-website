@@ -2,22 +2,24 @@
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { useCounter, useTypewriter } from "@/hooks/use-hooks"
+import { useCounter, useTypewriter, useInView } from "@/hooks/use-hooks"
 import { ArrowRight, CheckCircle } from "lucide-react"
 import Image from "next/image"
 
 export default function Hero() {
-  const countriesRef = useCounter(50)
-  const productsRef = useCounter(1000)
-  const supportRef = useCounter(24)
+  const [ref, isInView] = useInView();
+  const countriesRef = useCounter(50, 2000, 0, isInView)
+  const productsRef = useCounter(1000, 2000, 0, isInView)
+  const supportRef = useCounter(24, 2000, 0, isInView)
   const [typewriterRefRaw, displayText] = useTypewriter(
-    "Global FMCG & Ecommerce Distribution Simplified"
+    "Global FMCG & Ecommerce Distribution Simplified", 50, isInView
   )
   const typewriterRef = typewriterRefRaw as React.RefObject<HTMLHeadingElement>
 
   return (
     <section
       id='home'
+      ref={ref}
       className={`relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 lg:py-32`}
     >
       <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
@@ -114,5 +116,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  );
+  )
 }

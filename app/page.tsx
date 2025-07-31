@@ -9,6 +9,7 @@ import Markets from "@/components/sections/markets"
 import Products from "@/components/sections/products"
 import Services from "@/components/sections/services"
 import WhyChooseUs from "@/components/sections/why-choose-us"
+import WhoWeAre from "@/components/sections/who-we-are"
 import MotionDiv from "@/components/ui/motion-div"
 
 import ScrollToTopButton from "@/components/ui/scroll-to-top-button"
@@ -82,6 +83,9 @@ export default function LuminousGlobalWebsite() {
         </MotionDiv>
         <MotionDiv>
           <About />
+        </MotionDiv>
+        <MotionDiv>
+          <WhoWeAre />
         </MotionDiv>
         <MotionDiv>
           <Services />
