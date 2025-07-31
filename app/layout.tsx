@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+import ScrollToTopButton from "@/components/ui/scroll-to-top-button";
 
 export const metadata: Metadata = {
   title: {
@@ -75,6 +76,7 @@ html {
       <body>
         {children}
         <SonnerToaster />
+        <ScrollToTopButton />
       </body>
     </html>
   );

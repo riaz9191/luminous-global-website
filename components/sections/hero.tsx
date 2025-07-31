@@ -42,12 +42,7 @@ export default function Hero() {
                 products across global markets.
               </p>
             </div>
-            import Link from "next/link";
-
-// ... (imports)
-
-// ... (component code)
-
+           
             <div className={`flex flex-col sm:flex-row gap-4`}>
               <Link href="#contact">
                 <Button

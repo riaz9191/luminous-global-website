@@ -110,7 +110,7 @@ export default function Contact() {
           </div>
 
           {/* Fixed Contact Form for Mobile */}
-          <div className="w-full">
+          <div className="w-full border rounded-lg  border-slate-100">
             <Card
               className={`border-0 shadow-lg hover-lift w-full`}
             >
