@@ -5,63 +5,46 @@ import { Button } from "@/components/ui/button"
 import { useInView, useCounter, useTypewriter } from "@/hooks/use-hooks"
 import { ArrowRight, CheckCircle } from "lucide-react"
 import Image from "next/image"
-import { useEffect } from "react"
 
 export default function Hero() {
-  const [heroRef, heroInView] = useInView(0.1)
-  const { count: countriesCount, setIsVisible: setCountriesVisible } = useCounter(50)
-  const { count: productsCount, setIsVisible: setProductsVisible } = useCounter(1000)
-  const { count: supportCount, setIsVisible: setSupportVisible } = useCounter(24)
-  const { displayText: heroText, isComplete } = useTypewriter(
-    "Global FMCG & Ecommerce Distribution Simplified",
-    80,
+  const [ref, isInView] = useInView()
+  const countriesRef = useCounter(50)
+  const productsRef = useCounter(1000)
+  const supportRef = useCounter(24)
+  const [typewriterRef, displayText] = useTypewriter(
+    "Global FMCG & Ecommerce Distribution Simplified"
   )
-
-  useEffect(() => {
-    if (heroInView) {
-      setCountriesVisible(true)
-      setProductsVisible(true)
-      setSupportVisible(true)
-    }
-  }, [heroInView, setCountriesVisible, setProductsVisible, setSupportVisible])
 
   return (
     <section
       id="home"
-      ref={heroRef}
-      className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 lg:py-32 z-"
+      ref={ref}
+      className={`fade-in-section ${isInView ? "is-visible" : ""} relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 lg:py-32`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-6">
               <Badge
-                className={`bg-blue-100 text-blue-800 hover:bg-blue-100 ${
-                  heroInView ? "opacity-100 animate-fadeUp" : "opacity-0"
-                }`}
+                className={`bg-blue-100 text-blue-800 hover:bg-blue-100`}
               >
                 🌍 Global FMCG & Ecommerce Distribution
               </Badge>
               <h1
-                className={`text-4xl lg:text-6xl font-bold text-gray-900 leading-tight ${
-                  heroInView ? "opacity-100" : "opacity-0"
-                }`}
+                ref={typewriterRef}
+                className={`text-4xl lg:text-6xl font-bold text-gray-900 leading-tight`}
               >
-                <span className={isComplete ? "" : "typewriter"}>{heroText}</span>
+                {displayText}
               </h1>
               <p
-                className={`text-xl text-gray-600 leading-relaxed ${
-                  heroInView ? "opacity-100 animate-fadeUp delay-300" : "opacity-0"
-                }`}
+                className={`text-xl text-gray-600 leading-relaxed`}
               >
                 At Luminous Global LLC, we connect quality, affordability, and efficiency — delivering everyday
                 essentials and trending products across global markets.
               </p>
             </div>
             <div
-              className={`flex flex-col sm:flex-row gap-4 ${
-                heroInView ? "opacity-100 animate-fadeUp delay-400" : "opacity-0"
-              }`}
+              className={`flex flex-col sm:flex-row gap-4`}
             >
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 hover-lift group">
                 Start Trading
@@ -72,25 +55,23 @@ export default function Hero() {
               </Button>
             </div>
             <div
-              className={`flex items-center space-x-8 pt-4 ${
-                heroInView ? "opacity-100 animate-fadeUp delay-500" : "opacity-0"
-              }`}
+              className={`flex items-center space-x-8 pt-4`}
             >
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900">{countriesCount}+</div>
+                <div ref={countriesRef} className="text-3xl font-bold text-gray-900">50+</div>
                 <div className="text-sm text-gray-600">Countries Served</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900">{productsCount}+</div>
+                <div ref={productsRef} className="text-3xl font-bold text-gray-900">1000+</div>
                 <div className="text-sm text-gray-600">Products</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-gray-900">{supportCount}/7</div>
+                <div ref={supportRef} className="text-3xl font-bold text-gray-900">24/7</div>
                 <div className="text-sm text-gray-600">Support</div>
               </div>
             </div>
           </div>
-          <div className={`relative ${heroInView ? "opacity-100 animate-float" : "opacity-0"}`}>
+          <div className={`relative animate-float`}>
             <Image
               src="/placeholder.svg?height=600&width=600"
               alt="Global Distribution Network"
@@ -99,9 +80,7 @@ export default function Hero() {
               className="rounded-2xl shadow-2xl"
             />
             <div
-              className={`absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg ${
-                heroInView ? "opacity-100 animate-fadeUp delay-600" : "opacity-0"
-              }`}
+              className={`absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg`}
             >
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">

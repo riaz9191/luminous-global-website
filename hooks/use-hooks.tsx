@@ -1,80 +1,86 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 
-// Smooth Counter Hook
-export function useCounter(end: number, duration = 2000) {
-  const [count, setCount] = useState(0)
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    if (!isVisible) return
-
-    let startTime: number
-    const animate = (currentTime: number) => {
-      if (!startTime) startTime = currentTime
-      const progress = Math.min((currentTime - startTime) / duration, 1)
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4)
-      setCount(Math.floor(easeOutQuart * end))
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      }
-    }
-
-    requestAnimationFrame(animate)
-  }, [end, duration, isVisible])
-
-  return { count, setIsVisible }
-}
-
-// Fixed Intersection Observer Hook - No Glitch
-export function useInView(threshold = 0.3) {
+// Intersection Observer Hook
+export function useInView(threshold = 0.1) {
   const [isInView, setIsInView] = useState(false)
-  const [ref, setRef] = useState<HTMLElement | null>(null)
+  const ref = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
-    if (!ref) return
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Only trigger once when entering view
-        if (entry.isIntersecting && !isInView) {
+        if (entry.isIntersecting) {
           setIsInView(true)
+          if (ref.current) {
+            observer.unobserve(ref.current)
+          }
         }
       },
-      {
-        threshold,
-        rootMargin: "0px 0px -100px 0px", // Trigger earlier
-      },
+      { threshold }
     )
 
-    observer.observe(ref)
-    return () => observer.disconnect()
-  }, [ref, threshold, isInView])
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
 
-  return [setRef, isInView] as const
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [threshold])
+
+  return [ref, isInView] as const
+}
+
+// Smooth Counter Hook
+export function useCounter(end: number, duration = 2000, start = 0) {
+  const [count, setCount] = useState(start)
+  const ref = useRef<HTMLElement | null>(null)
+  const isInView = useInView()[1]
+
+  useEffect(() => {
+    if (isInView) {
+      let startTime: number
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime
+        const progress = Math.min((currentTime - startTime) / duration, 1)
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+        setCount(Math.floor(easeOutQuart * (end - start) + start))
+
+        if (progress < 1) {
+          requestAnimationFrame(animate)
+        }
+      }
+      requestAnimationFrame(animate)
+    }
+  }, [end, duration, start, isInView])
+
+  return ref
 }
 
 // Typewriter Effect Hook
-export function useTypewriter(text: string, speed = 100) {
+export function useTypewriter(text: string, speed = 50) {
   const [displayText, setDisplayText] = useState("")
-  const [isComplete, setIsComplete] = useState(false)
+  const ref = useRef<HTMLElement | null>(null)
+  const isInView = useInView()[1]
 
   useEffect(() => {
-    let i = 0
-    const timer = setInterval(() => {
-      if (i < text.length) {
-        setDisplayText(text.slice(0, i + 1))
-        i++
-      } else {
-        setIsComplete(true)
-        clearInterval(timer)
-      }
-    }, speed)
+    if (isInView) {
+      let i = 0
+      const timer = setInterval(() => {
+        if (i < text.length) {
+          setDisplayText(text.slice(0, i + 1))
+          i++
+        } else {
+          clearInterval(timer)
+        }
+      }, speed)
 
-    return () => clearInterval(timer)
-  }, [text, speed])
+      return () => clearInterval(timer)
+    }
+  }, [text, speed, isInView])
 
-  return { displayText, isComplete }
+  return [ref, displayText] as const
 }
