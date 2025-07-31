@@ -9,12 +9,16 @@ import { useInView } from "@/hooks/use-hooks"
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
 
 export default function Contact() {
-  const [contactRef, contactInView] = useInView(0.3)
+  const [ref, isInView] = useInView()
 
   return (
-    <section id="contact" ref={contactRef} className="py-20 bg-white">
+    <section
+      id="contact"
+      ref={ref}
+      className={`fade-in-section ${isInView ? "is-visible" : ""} py-20 bg-white`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-16 ${contactInView ? "opacity-100 animate-fadeUp" : "opacity-0"}`}>
+        <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Let's Do Business!</h2>
           <p className="text-xl text-gray-600">
             If you are a supplier, wholesaler, or buyer — reach out to us today.
@@ -23,7 +27,7 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           <div className="space-y-8">
-            <div className={`${contactInView ? "opacity-100 animate-fadeUp delay-100" : "opacity-0"}`}>
+            <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
               <div className="space-y-4">
                 {[
@@ -33,9 +37,7 @@ export default function Contact() {
                 ].map((contact, index) => (
                   <div
                     key={index}
-                    className={`flex items-center space-x-4 ${
-                      contactInView ? `opacity-100 animate-fadeUp delay-${(index + 2) * 100}` : "opacity-0"
-                    }`}
+                    className={`flex items-center space-x-4`}
                   >
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                       <contact.icon className="h-6 w-6 text-blue-600" />
@@ -47,7 +49,7 @@ export default function Contact() {
             </div>
 
             {/* Cool Follow Us Section with Color Icons */}
-            <div className={`${contactInView ? "opacity-100 animate-fadeUp delay-500" : "opacity-0"}`}>
+            <div>
               <h4 className="font-semibold text-gray-900 mb-6 text-lg">Follow Us</h4>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
@@ -71,9 +73,7 @@ export default function Contact() {
           {/* Fixed Contact Form for Mobile */}
           <div className="w-full">
             <Card
-              className={`border-0 shadow-lg hover-lift w-full ${
-                contactInView ? "opacity-100 animate-fadeUp delay-200" : "opacity-0"
-              }`}
+              className={`border-0 shadow-lg hover-lift w-full`}
             >
               <CardHeader>
                 <CardTitle className="text-xl">Contact Form</CardTitle>
@@ -94,7 +94,7 @@ export default function Contact() {
                   </Label>
                   <Input id="email" type="email" placeholder="your@email.com" className="h-12 w-full" />
                 </div>
-                <div className="space-y-2">
+                <div className="tsx space-y-2">
                   <Label htmlFor="message" className="text-base">
                     Message
                   </Label>

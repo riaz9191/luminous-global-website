@@ -37,7 +37,7 @@ export function useInView(threshold = 0.1) {
 // Smooth Counter Hook
 export function useCounter(end: number, duration = 2000, start = 0) {
   const [count, setCount] = useState(start)
-  const ref = useRef<HTMLElement | null>(null)
+  const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView()[1]
 
   useEffect(() => {

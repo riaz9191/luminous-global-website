@@ -5,12 +5,16 @@ import { useInView } from "@/hooks/use-hooks"
 import { Globe, Package, ShoppingCart } from "lucide-react"
 
 export default function Services() {
-  const [servicesRef, servicesInView] = useInView(0.3)
+  const [ref, isInView] = useInView()
 
   return (
-    <section id="services" ref={servicesRef} className="py-20 bg-gray-50">
+    <section
+      id="services"
+      ref={ref}
+      className={`fade-in-section ${isInView ? "is-visible" : ""} py-20 bg-gray-50`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-16 ${servicesInView ? "opacity-100 animate-fadeUp" : "opacity-0"}`}>
+        <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">What We Do</h2>
           <p className="text-xl text-gray-600">
             Comprehensive global distribution services tailored to your business needs
@@ -40,9 +44,7 @@ export default function Services() {
           ].map((service, index) => (
             <Card
               key={index}
-              className={`border-0 shadow-lg hover-lift ${
-                servicesInView ? `opacity-100 animate-fadeUp delay-${(index + 1) * 100}` : "opacity-0"
-              }`}
+              className={`border-0 shadow-lg hover-lift`}
             >
               <CardHeader className="text-center">
                 <div

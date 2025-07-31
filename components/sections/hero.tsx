@@ -11,9 +11,10 @@ export default function Hero() {
   const countriesRef = useCounter(50)
   const productsRef = useCounter(1000)
   const supportRef = useCounter(24)
-  const [typewriterRef, displayText] = useTypewriter(
+  const [typewriterRefRaw, displayText] = useTypewriter(
     "Global FMCG & Ecommerce Distribution Simplified"
   )
+  const typewriterRef = typewriterRefRaw as React.RefObject<HTMLHeadingElement>
 
   return (
     <section
