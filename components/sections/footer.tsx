@@ -12,9 +12,9 @@ export default function Footer() {
               <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                 <Globe className="h-4 w-4 text-white" />
               </div>
-              <span className="font-bold">Luminous Global LLC</span>
+              <span className="font-bold">{process.env.NEXT_PUBLIC_APP_TITLE}</span>
             </div>
-            <p className="text-gray-400 text-sm">Global FMCG & Ecommerce Distribution Simplified</p>
+            <p className="text-gray-400 text-sm">{process.env.NEXT_PUBLIC_APP_DESCRIPTION}</p>
           </div>
 
           {[
@@ -23,7 +23,7 @@ export default function Footer() {
               items: ["Wholesale & B2B Supply", "Ecommerce Distribution", "International Sourcing", "Private Label"],
             },
             { title: "Markets", items: ["North America", "Middle East", "Africa", "Global Online"] },
-            { title: "Contact", items: ["info@luminousgloballlc.com", "Florida, USA", "Founded 2025"] },
+            { title: "Contact", items: [process.env.NEXT_PUBLIC_COMPANY_EMAIL, process.env.NEXT_PUBLIC_COMPANY_LOCATION, process.env.NEXT_PUBLIC_COMPANY_FOUNDED] },
           ].map((section, index) => (
             <div key={index}>
               <h4 className="font-semibold mb-4">{section.title}</h4>

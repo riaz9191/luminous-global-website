@@ -17,16 +17,14 @@ export default function Hero() {
 
   return (
     <section
-      id="home"
+      id='home'
       className={`relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 lg:py-32`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <Badge
-                className={`bg-blue-100 text-blue-800 hover:bg-blue-100`}
-              >
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='grid lg:grid-cols-2 gap-12 items-center'>
+          <div className='space-y-8'>
+            <div className='space-y-6'>
+              <Badge className={`bg-blue-100 text-blue-800 hover:bg-blue-100`}>
                 🌍 Global FMCG & Ecommerce Distribution
               </Badge>
               <h1
@@ -35,59 +33,80 @@ export default function Hero() {
               >
                 {displayText}
               </h1>
-              <p
-                className={`text-xl text-gray-600 leading-relaxed`}
-              >
-                At Luminous Global LLC, we connect quality, affordability, and efficiency — delivering everyday
-                essentials and trending products across global markets.
+              <p className={`text-xl text-gray-600 leading-relaxed`}>
+                At Luminous Global LLC, we connect quality, affordability, and
+                efficiency — delivering everyday essentials and trending
+                products across global markets.
               </p>
             </div>
-            <div
-              className={`flex flex-col sm:flex-row gap-4`}
-            >
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 hover-lift group">
+            <div className={`flex flex-col sm:flex-row gap-4`}>
+              <Button
+                size='lg'
+                className='bg-blue-600 hover:bg-blue-700 hover-lift group'
+              >
                 Start Trading
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className='ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform' />
               </Button>
-              <Button size="lg" variant="outline" className="hover-lift bg-transparent">
+              <Button
+                size='lg'
+                variant='outline'
+                className='hover-lift bg-transparent'
+              >
                 View Products
               </Button>
             </div>
-            <div
-              className={`flex items-center space-x-8 pt-4`}
-            >
-              <div className="text-center">
-                <div ref={countriesRef} className="text-3xl font-bold text-gray-900">50+</div>
-                <div className="text-sm text-gray-600">Countries Served</div>
+            <div className={`flex items-center space-x-8 pt-4`}>
+              <div className='text-center'>
+                <div
+                  ref={countriesRef}
+                  className='text-3xl font-bold text-gray-900'
+                >
+                  50+
+                </div>
+                <div className='text-sm text-gray-600'>Countries Served</div>
               </div>
-              <div className="text-center">
-                <div ref={productsRef} className="text-3xl font-bold text-gray-900">1000+</div>
-                <div className="text-sm text-gray-600">Products</div>
+              <div className='text-center'>
+                <div
+                  ref={productsRef}
+                  className='text-3xl font-bold text-gray-900'
+                >
+                  1000+
+                </div>
+                <div className='text-sm text-gray-600'>Products</div>
               </div>
-              <div className="text-center">
-                <div ref={supportRef} className="text-3xl font-bold text-gray-900">24/7</div>
-                <div className="text-sm text-gray-600">Support</div>
+              <div className='text-center'>
+                <div
+                  ref={supportRef}
+                  className='text-3xl font-bold text-gray-900'
+                >
+                  24/7
+                </div>
+                <div className='text-sm text-gray-600'>Support</div>
               </div>
             </div>
           </div>
-          <div className={`relative animate-float overflow-hidden`}>
+          <div className={`relative animate-float`}>
             <Image
-              src="/placeholder.svg?height=600&width=600"
-              alt="Global Distribution Network"
+              src='/placeholder.svg?height=600&width=600'
+              alt='Global Distribution Network'
               width={600}
               height={600}
-              className="rounded-2xl shadow-2xl"
+              className='rounded-2xl shadow-2xl'
             />
             <div
               className={`absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg`}
             >
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                  <CheckCircle className="h-6 w-6 text-green-600" />
+              <div className='flex items-center space-x-3'>
+                <div className='w-12 h-12 bg-green-100 rounded-full flex items-center justify-center'>
+                  <CheckCircle className='h-6 w-6 text-green-600' />
                 </div>
                 <div>
-                  <div className="font-semibold text-gray-900">Trusted Partner</div>
-                  <div className="text-sm text-gray-600">Florida-based U.S. Company</div>
+                  <div className='font-semibold text-gray-900'>
+                    Trusted Partner
+                  </div>
+                  <div className='text-sm text-gray-600'>
+                    Florida-based U.S. Company
+                  </div>
                 </div>
               </div>
             </div>
@@ -95,5 +114,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

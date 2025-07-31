@@ -6,10 +6,48 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useInView } from "@/hooks/use-hooks"
-import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
+import { Facebook, Instagram, Mail, MapPin, Phone, Loader2 } from "lucide-react"
+import { useState } from "react"
+import { toast } from "sonner"
 
 export default function Contact() {
   const [ref, isInView] = useInView()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData((prev) => ({ ...prev, [id]: value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        toast.success("Message sent successfully!")
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        toast.error("Failed to send message.")
+      }
+    } catch (error) {
+      toast.error("An error occurred.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <section
@@ -82,32 +120,57 @@ export default function Contact() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-base">
-                    Name
-                  </Label>
-                  <Input id="name" placeholder="Your full name" className="h-12 w-full" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-base">
-                    Email
-                  </Label>
-                  <Input id="email" type="email" placeholder="your@email.com" className="h-12 w-full" />
-                </div>
-                <div className="tsx space-y-2">
-                  <Label htmlFor="message" className="text-base">
-                    Message
-                  </Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your business needs..."
-                    rows={4}
-                    className="w-full resize-none"
-                  />
-                </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 hover-lift h-12 text-base">
-                  Send Message
-                </Button>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-base">
+                      Name
+                    </Label>
+                    <Input
+                      id="name"
+                      placeholder="Your full name"
+                      className="h-12 w-full"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-base">
+                      Email
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="your@email.com"
+                      className="h-12 w-full"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="tsx space-y-2">
+                    <Label htmlFor="message" className="text-base">
+                      Message
+                    </Label>
+                    <Textarea
+                      id="message"
+                      placeholder="Tell us about your business needs..."
+                      rows={4}
+                      className="w-full resize-none"
+                      value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="w-full bg-blue-600 hover:bg-blue-700 hover-lift h-12 text-base"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : (
+                      "Send Message"
+                    )}
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </div>

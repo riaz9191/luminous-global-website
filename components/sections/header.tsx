@@ -30,8 +30,8 @@ export default function Header() {
                   <Globe className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">Luminous Global LLC</h1>
-                  <p className="text-xs text-gray-500">Florida, USA</p>
+                  <h1 className="text-xl font-bold text-gray-900">{process.env.NEXT_PUBLIC_APP_TITLE}</h1>
+                  <p className="text-xs text-gray-500">{process.env.NEXT_PUBLIC_COMPANY_LOCATION}</p>
                 </div>
               </div>
             </div>

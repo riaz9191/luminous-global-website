@@ -1,12 +1,13 @@
+import { Toaster as SonnerToaster } from "@/components/ui/sonner"
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Luminous Global LLC',
-  description: 'Global FMCG & Ecommerce Distribution Simplified',
-  generator: 'Riaz Ahammed',
+  title: process.env.NEXT_PUBLIC_APP_TITLE || 'Luminous Global LLC',
+  description: process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'Global FMCG & Ecommerce Distribution Simplified',
+  generator: process.env.NEXT_PUBLIC_APP_GENERATOR || 'Riaz Ahammed',
 }
 
 export default function RootLayout({
@@ -25,7 +26,10 @@ html {
 }
         `}</style>
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <SonnerToaster />
+      </body>
     </html>
   )
 }
