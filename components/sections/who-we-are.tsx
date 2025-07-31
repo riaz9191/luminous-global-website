@@ -1,5 +1,6 @@
 "use client"
 
+import { siteConfig } from "@/config/site"
 import { useInView } from "@/hooks/use-hooks"
 import { Globe, ShoppingCart, Zap } from "lucide-react"
 import Image from "next/image"
@@ -55,7 +56,7 @@ export default function WhoWeAre() {
           </div>
           <div className="flex justify-end">
             <Image
-              src="/placeholder.svg?height=500&width=500"
+              src={siteConfig.images.whoWeAre}
               alt="Who We Are - Luminous Global"
               width={500}
               height={500}

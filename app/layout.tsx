@@ -35,6 +35,11 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     siteName: siteConfig.name,
     images: [
+      /**
+       * The Open Graph image for social media sharing.
+       * This image will be displayed when the website is shared on platforms like Facebook, LinkedIn, etc.
+       * It's crucial for good social media presence.
+       */
       {
         url: siteConfig.ogImage,
         width: 1200,

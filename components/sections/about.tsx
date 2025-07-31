@@ -1,5 +1,6 @@
 "use client"
 
+import { siteConfig } from "@/config/site"
 import { useInView } from "@/hooks/use-hooks"
 import { MapPin, Package, Star } from "lucide-react"
 import Image from "next/image"
@@ -28,7 +29,12 @@ export default function About() {
         <div className='grid md:grid-cols-2 gap-12 items-center'>
           <div>
             <Image
-              src='/placeholder.svg?height=400&width=500'
+              /**
+               * Placeholder image for the About Us section.
+               * This image visually represents the company's office or a related business concept.
+               * It's a temporary asset and should be replaced with a relevant, high-quality image.
+               */
+              src={siteConfig.images.about}
               alt='Luminous Global LLC Office'
               width={500}
               height={400}

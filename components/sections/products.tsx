@@ -1,5 +1,6 @@
 "use client"
 
+import { siteConfig } from "@/config/site"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import MotionDiv from "@/components/ui/motion-div"
 import Image from "next/image"
@@ -29,7 +30,7 @@ export default function Products() {
                 <CardHeader className="p-0">
                   <div className="overflow-hidden">
                     <Image
-                      src={`/placeholder.svg?height=200&width=300&query=${category.image}`}
+                      src={siteConfig.images.products[category.name as keyof typeof siteConfig.images.products]}
                       alt={category.name}
                       width={300}
                       height={200}

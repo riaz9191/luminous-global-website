@@ -1,5 +1,6 @@
 "use client"
 
+import { siteConfig } from "@/config/site"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { useCounter, useTypewriter, useInView } from "@/hooks/use-hooks"
@@ -95,7 +96,12 @@ export default function Hero() {
           </div>
           <div className={`relative animate-float`}>
             <Image
-              src='/placeholder.svg?height=600&width=600'
+              /**
+               * Placeholder image for the Hero section.
+               * This image visually represents the global distribution network or the company's reach.
+               * It's a temporary asset and should be replaced with a relevant, high-quality image.
+               */
+              src={siteConfig.images.hero}
               alt='Global Distribution Network'
               width={600}
               height={600}
