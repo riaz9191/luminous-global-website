@@ -3,13 +3,14 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: process.env.NEXT_PUBLIC_APP_TITLE || "Luminous Global LLC",
-  description:
-    process.env.NEXT_PUBLIC_APP_DESCRIPTION ||
-    "Global FMCG & Ecommerce Distribution Simplified",
-  generator: process.env.NEXT_PUBLIC_APP_GENERATOR || "Riaz Ahammed",
+  title: siteConfig.name,
+  description: siteConfig.description,
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

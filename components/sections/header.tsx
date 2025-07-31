@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Globe } from "lucide-react"
 import MobileNav from "./mobile-nav"
+import { siteConfig } from "@/config/site"
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -30,8 +31,8 @@ export default function Header() {
                   <Globe className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">{process.env.NEXT_PUBLIC_APP_TITLE}</h1>
-                  <p className="text-xs text-gray-500">{process.env.NEXT_PUBLIC_COMPANY_LOCATION}</p>
+                  <h1 className="text-xl font-bold text-gray-900">{siteConfig.name}</h1>
+                  <p className="text-xs text-gray-500">{siteConfig.contact.address}</p>
                 </div>
               </div>
             </div>

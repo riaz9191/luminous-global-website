@@ -9,6 +9,7 @@ import { useInView } from "@/hooks/use-hooks"
 import { Facebook, Instagram, Mail, MapPin, Phone, Loader2 } from "lucide-react"
 import { useState } from "react"
 import { toast } from "sonner"
+import { siteConfig } from "@/config/site"
 
 export default function Contact() {
   const [ref, isInView] = useInView()
@@ -69,9 +70,9 @@ export default function Contact() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
               <div className="space-y-4">
                 {[
-                  { icon: Mail, text: "info@luminousgloballlc.com" },
-                  { icon: Phone, text: "Phone/WhatsApp: Available on request" },
-                  { icon: MapPin, text: "Florida, USA" },
+                  { icon: Mail, text: siteConfig.contact.email },
+                  { icon: Phone, text: siteConfig.contact.phone },
+                  { icon: MapPin, text: siteConfig.contact.address },
                 ].map((contact, index) => (
                   <div
                     key={index}
@@ -91,14 +92,14 @@ export default function Contact() {
               <h4 className="font-semibold text-gray-900 mb-6 text-lg">Follow Us</h4>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#"
+                  href={siteConfig.links.instagram}
                   className="flex items-center space-x-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 group"
                 >
                   <Instagram className="h-5 w-5 group-hover:rotate-12 transition-transform" />
                   <span className="font-medium">@luminousglobal</span>
                 </a>
                 <a
-                  href="#"
+                  href={siteConfig.links.facebook}
                   className="flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 group"
                 >
                   <Facebook className="h-5 w-5 group-hover:rotate-12 transition-transform" />

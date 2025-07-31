@@ -1,5 +1,6 @@
 "use client"
 
+import { siteConfig } from "@/config/site"
 import { Globe } from "lucide-react"
 
 export default function Footer() {
@@ -12,9 +13,9 @@ export default function Footer() {
               <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                 <Globe className="h-4 w-4 text-white" />
               </div>
-              <span className="font-bold">{process.env.NEXT_PUBLIC_APP_TITLE}</span>
+              <span className="font-bold">{siteConfig.name}</span>
             </div>
-            <p className="text-gray-400 text-sm">{process.env.NEXT_PUBLIC_APP_DESCRIPTION}</p>
+            <p className="text-gray-400 text-sm">{siteConfig.description}</p>
           </div>
 
           {[
@@ -23,7 +24,7 @@ export default function Footer() {
               items: ["Wholesale & B2B Supply", "Ecommerce Distribution", "International Sourcing", "Private Label"],
             },
             { title: "Markets", items: ["North America", "Middle East", "Africa", "Global Online"] },
-            { title: "Contact", items: [process.env.NEXT_PUBLIC_COMPANY_EMAIL, process.env.NEXT_PUBLIC_COMPANY_LOCATION, process.env.NEXT_PUBLIC_COMPANY_FOUNDED] },
+            { title: "Contact", items: [siteConfig.contact.email, siteConfig.contact.address] },
           ].map((section, index) => (
             <div key={index}>
               <h4 className="font-semibold mb-4">{section.title}</h4>
@@ -39,7 +40,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; 2025 Luminous Global LLC. All rights reserved. | Florida, USA</p>
+          <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved. | {siteConfig.contact.address}</p>
         </div>
       </div>
     </footer>
