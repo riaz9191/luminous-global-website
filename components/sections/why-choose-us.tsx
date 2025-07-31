@@ -1,16 +1,11 @@
 "use client"
 
-import { useInView } from "@/hooks/use-hooks"
+import MotionDiv from "@/components/ui/motion-div"
 import { MapPin, Shield, Truck, Zap } from "lucide-react"
 
 export default function WhyChooseUs() {
-  const [ref, isInView] = useInView()
-
   return (
-    <section
-      ref={ref}
-      className={`fade-in-section ${isInView ? "is-visible" : ""} py-20 bg-white`}
-    >
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
@@ -29,18 +24,17 @@ export default function WhyChooseUs() {
             { icon: Truck, title: "Amazon-ready Logistics", desc: "& dropshipping solutions", color: "green" },
             { icon: Zap, title: "Fast Delivery", desc: "Across USA, Canada, UAE & more", color: "orange" },
           ].map((item, index) => (
-            <div
-              key={index}
-              className={`text-center space-y-4`}
-            >
-              <div
-                className={`w-20 h-20 bg-${item.color}-100 rounded-full flex items-center justify-center mx-auto`}
-              >
-                <item.icon className={`h-10 w-10 text-${item.color}-600`} />
+            <MotionDiv key={index} delay={index * 0.2}>
+              <div className={`text-center space-y-4`}>
+                <div
+                  className={`w-20 h-20 bg-${item.color}-100 rounded-full flex items-center justify-center mx-auto`}
+                >
+                  <item.icon className={`h-10 w-10 text-${item.color}-600`} />
+                </div>
+                <h3 className="font-semibold text-gray-900 text-lg">{item.title}</h3>
+                <p className="text-gray-600">{item.desc}</p>
               </div>
-              <h3 className="font-semibold text-gray-900 text-lg">{item.title}</h3>
-              <p className="text-gray-600">{item.desc}</p>
-            </div>
+            </MotionDiv>
           ))}
         </div>
       </div>

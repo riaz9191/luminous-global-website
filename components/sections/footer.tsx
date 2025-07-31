@@ -1,16 +1,10 @@
 "use client"
 
-import { useInView } from "@/hooks/use-hooks"
 import { Globe } from "lucide-react"
 
 export default function Footer() {
-  const [ref, isInView] = useInView()
-
   return (
-    <footer
-      ref={ref}
-      className={`x ${isInView ? "is-visible" : ""} bg-gray-900 text-white py-12`}
-    >
+    <footer className="bg-gray-900 text-white py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">

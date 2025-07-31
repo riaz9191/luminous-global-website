@@ -9,6 +9,7 @@ import Markets from "@/components/sections/markets"
 import Products from "@/components/sections/products"
 import Services from "@/components/sections/services"
 import WhyChooseUs from "@/components/sections/why-choose-us"
+import MotionDiv from "@/components/ui/motion-div"
 
 import ScrollToTopButton from "@/components/ui/scroll-to-top-button"
 
@@ -16,18 +17,9 @@ export default function LuminousGlobalWebsite() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-white overflow-x-hidden">
+      <div className="max-w-full">
         <style jsx global>{`
-          .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-          }
-
-          .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          
 
           @keyframes float {
             0%,
@@ -85,14 +77,30 @@ export default function LuminousGlobalWebsite() {
           }
         `}</style>
 
-        <Hero />
-        <About />
-        <Services />
-        <WhyChooseUs />
-        <Markets />
-        <Products />
-        <Contact />
-        <Footer />
+        <MotionDiv>
+          <Hero />
+        </MotionDiv>
+        <MotionDiv>
+          <About />
+        </MotionDiv>
+        <MotionDiv>
+          <Services />
+        </MotionDiv>
+        <MotionDiv>
+          <WhyChooseUs />
+        </MotionDiv>
+        <MotionDiv>
+          <Markets />
+        </MotionDiv>
+        <MotionDiv>
+          <Products />
+        </MotionDiv>
+        <MotionDiv>
+          <Contact />
+        </MotionDiv>
+        <MotionDiv>
+          <Footer />
+        </MotionDiv>
       </div>
       {/* <ScrollToTopButton /> */}
     </>

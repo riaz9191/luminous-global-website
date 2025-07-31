@@ -2,12 +2,11 @@
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { useInView, useCounter, useTypewriter } from "@/hooks/use-hooks"
+import { useCounter, useTypewriter } from "@/hooks/use-hooks"
 import { ArrowRight, CheckCircle } from "lucide-react"
 import Image from "next/image"
 
 export default function Hero() {
-  const [ref, isInView] = useInView()
   const countriesRef = useCounter(50)
   const productsRef = useCounter(1000)
   const supportRef = useCounter(24)
@@ -19,8 +18,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      ref={ref}
-      className={`fade-in-section ${isInView ? "is-visible" : ""} relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 lg:py-32`}
+      className={`relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 lg:py-32`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -72,7 +70,7 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <div className={`relative animate-float`}>
+          <div className={`relative animate-float overflow-hidden`}>
             <Image
               src="/placeholder.svg?height=600&width=600"
               alt="Global Distribution Network"
