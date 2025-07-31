@@ -20,7 +20,7 @@ export default function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-[200] transition-all duration-300 ease-in-out ${
+      className={`fixed inset-0 z-[9999] transition-all duration-300 ease-in-out ${
         isOpen ? "bg-black/60 backdrop-blur-sm" : "bg-transparent pointer-events-none"
       }`}
       onClick={() => setIsOpen(false)}
