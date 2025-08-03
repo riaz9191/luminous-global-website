@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
     const mailOptions = {
       from: `"Luminous Global" <${process.env.EMAIL_USER}>`,
-      to: "riaz91a@gmail.com",
+      to: "mdshan1620@gmail.com",
       subject: `New Inquiry from ${name} | Luminous Global`,
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       html: `
