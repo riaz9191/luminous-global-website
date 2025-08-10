@@ -5,6 +5,8 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import ScrollToTopButton from "@/components/ui/scroll-to-top-button";
+import Header from "@/components/sections/header";
+import Footer from "@/components/sections/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -79,7 +81,9 @@ html {
         `}</style>
       </head>
       <body>
+        <Header />
         {children}
+        <Footer />
         <SonnerToaster />
         <ScrollToTopButton />
       </body>
