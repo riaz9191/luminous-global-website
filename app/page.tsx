@@ -1,23 +1,12 @@
-"use client"
-
-import About from "@/components/sections/about"
-import Contact from "@/components/sections/contact"
-import Footer from "@/components/sections/footer"
-import Header from "@/components/sections/header"
 import Hero from "@/components/sections/hero"
 import Markets from "@/components/sections/markets"
-import Products from "@/components/sections/products"
-import Services from "@/components/sections/services"
 import WhyChooseUs from "@/components/sections/why-choose-us"
 import WhoWeAre from "@/components/sections/who-we-are"
 import MotionDiv from "@/components/ui/motion-div"
 
-import ScrollToTopButton from "@/components/ui/scroll-to-top-button"
-
 export default function LuminousGlobalWebsite() {
   return (
     <>
-      <Header />
       <div className="max-w-full">
         <style jsx global>{`
           
@@ -82,13 +71,7 @@ export default function LuminousGlobalWebsite() {
           <Hero />
         </MotionDiv>
         <MotionDiv>
-          <About />
-        </MotionDiv>
-        <MotionDiv>
           <WhoWeAre />
-        </MotionDiv>
-        <MotionDiv>
-          <Services />
         </MotionDiv>
         <MotionDiv>
           <WhyChooseUs />
@@ -96,17 +79,7 @@ export default function LuminousGlobalWebsite() {
         <MotionDiv>
           <Markets />
         </MotionDiv>
-        <MotionDiv>
-          <Products />
-        </MotionDiv>
-        <MotionDiv>
-          <Contact />
-        </MotionDiv>
-        <MotionDiv>
-          <Footer />
-        </MotionDiv>
       </div>
-      {/* <ScrollToTopButton /> */}
     </>
   )
 }

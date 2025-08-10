@@ -11,11 +11,11 @@ interface MobileNavProps {
 
 export default function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
   const navItems = [
-    { name: "Home", href: "#home", icon: "🏠" },
-    { name: "About", href: "#about", icon: "🏢" },
-    { name: "Services", href: "#services", icon: "⚙️" },
-    { name: "Products", href: "#products", icon: "📦" },
-    { name: "Contact", href: "#contact", icon: "📞" },
+    { name: "Home", href: "/", icon: "🏠" },
+    { name: "About", href: "/about", icon: "🏢" },
+    { name: "Services", href: "/services", icon: "⚙️" },
+    { name: "Products", href: "/products", icon: "📦" },
+    { name: "Contact", href: "/contact", icon: "📞" },
   ]
 
   return (
