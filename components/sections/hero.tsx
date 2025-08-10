@@ -45,7 +45,7 @@ export default function Hero() {
             </div>
            
             <div className={`flex flex-col sm:flex-row gap-4`}>
-              <Link href="#contact">
+              <Link href="/contact">
                 <Button
                   size='lg'
                   className='bg-blue-600 hover:bg-blue-700 hover-lift group'
@@ -54,7 +54,7 @@ export default function Hero() {
                   <ArrowRight className='ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform' />
                 </Button>
               </Link>
-              <Link href="#products">
+              <Link href="/products">
                 <Button
                   size='lg'
                   variant='outline'

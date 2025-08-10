@@ -57,10 +57,15 @@ export default function MobileNav({ isOpen, setIsOpen }: MobileNavProps) {
             ))}
           </ul>
           <div className="mt-8 pt-6 border-t">
+            <Link
+              href="/contact"
+              onClick={() => setIsOpen(false)}
+              >
             <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-base font-medium">
               Get Free Quote
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
+            </Link>
           </div>
         </nav>
       </div>
