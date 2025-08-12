@@ -3,6 +3,7 @@ import Markets from "@/components/sections/markets"
 import WhyChooseUs from "@/components/sections/why-choose-us"
 import WhoWeAre from "@/components/sections/who-we-are"
 import MotionDiv from "@/components/ui/motion-div"
+import HeroSlider from "@/components/sections/slider/hero-slider"
 
 export default function LuminousGlobalWebsite() {
   return (
@@ -10,6 +11,9 @@ export default function LuminousGlobalWebsite() {
       <div className="max-w-full">
         <MotionDiv>
           <Hero />
+        </MotionDiv>
+        <MotionDiv>
+          <HeroSlider />
         </MotionDiv>
         <MotionDiv>
           <WhoWeAre />

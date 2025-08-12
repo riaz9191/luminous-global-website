@@ -92,3 +92,20 @@
   }
 }
 
+/*
+  Custom Swiper Pagination Dots for the Hero Section
+*/
+#hero-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  opacity: 0.5;
+  transition: opacity 0.3s, background-color 0.3s;
+}
+
+#hero-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: #3b82f6; /* A matching blue color */
+  /* You could also add a scale effect */
+  /* transform: scale(1.2); */
+}
